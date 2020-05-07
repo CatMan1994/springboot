@@ -24,6 +24,7 @@ public class MybatisConfig {
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sessionFactory.setMapperLocations(resolver.getResources("classpath*:mapper/*.xml")); // 扫描映射文件
         sessionFactory.getObject().getConfiguration().setMapUnderscoreToCamelCase(true); // 开启下划线对应单词首字母大写
+        sessionFactory.setTypeHandlersPackage("cn.zhongguochu.demo.handler");
         return sessionFactory.getObject();
     }
 }

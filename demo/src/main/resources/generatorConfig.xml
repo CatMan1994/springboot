@@ -36,21 +36,10 @@
         <javaClientGenerator targetPackage="cn.zhongguochu.demo.mapper" targetProject="src/main/java" type="XMLMAPPER"></javaClientGenerator>
 
         <!-- table标签可以有多个，至少一个，tableName指定表名，可以使用_和%通配符 -->
-        <table tableName="photo">
+        <table tableName="fruit">
             <!-- 是否只生成POJO对象 -->
             <property name="modelOnly" value="true"/>
-            <!-- 数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉 -->
-            <!--<domainObjectRenamingRule searchString="^Tbl" replaceString=""/>-->
-        </table>
-        <table tableName="photo_tag">
-            <!-- 是否只生成POJO对象 -->
-            <property name="modelOnly" value="true"/>
-            <!-- 数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉 -->
-            <!--<domainObjectRenamingRule searchString="^Tbl" replaceString=""/>-->
-        </table>
-        <table tableName="folder">
-            <!-- 是否只生成POJO对象 -->
-            <property name="modelOnly" value="true"/>
+            <columnOverride column="price" javaType="org.joda.money.Money" jdbcType="BIGINT" typeHandler="cn.zhongguochu.demo.handler.MoneyTypeHandler"/>
             <!-- 数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉 -->
             <!--<domainObjectRenamingRule searchString="^Tbl" replaceString=""/>-->
         </table>

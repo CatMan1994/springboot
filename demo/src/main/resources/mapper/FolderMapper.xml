@@ -23,7 +23,8 @@
     create_date,
     update_by,
     update_date,
-    remarks
+    remarks,
+    uo
   </sql>
 
   <insert id="insert">

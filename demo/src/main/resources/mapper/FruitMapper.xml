@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhongguochu.demo.mapper.FruitMapper">
+  <resultMap id="BaseResultMap" type="cn.zhongguochu.demo.entity.Fruit">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="BIGINT" property="price" typeHandler="cn.zhongguochu.demo.handler.MoneyTypeHandler" />
+  </resultMap>
+  <sql id="AllColumns">
+    id,
+    name,
+    price
+  </sql>
+  <insert id="insert">
+    insert into fruit(<include refid="AllColumns" />)
+    values(
+    #{id},
+    #{name},
+    #{price,typeHandler=cn.zhongguochu.demo.handler.MoneyTypeHandler}
+    )
+  </insert>
+
+  <select id="get" resultMap="BaseResultMap">
+    select * from fruit where id = #{id}
+  </select>
+</mapper>
